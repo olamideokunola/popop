@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pop up</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+    <script src="https://kit.fontawesome.com/8e6d6c1f81.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <div class="header">
+        <i id="hamburger" class="fa-solid fa-bars"></i>
+        <p>Online Store</p>
+        <div>
+            <p><a href="#/home"></a>PRODUCTS</p>
+            <p>BLOG</p>
+            <p id="cart-button">
+                <button id="open-cart"> 
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    [<span id="qty"></span>]
+                </button>
+            </p>
+        </div>
+    </div>
+
+    <div id="main-view" class="body-segment top">
+        <div class="container">
+
+            <div class="view-content">
+
+                <div id="product-list-view">
+                    <h1>Products</h1>
+                    <div class="product-list-container">
+                        <ul id="product-list" class="">
+                        </ul>
+
+                        <li id="product-list-item-template" class="product-list-item" hidden>
+                            <a href="#/product">
+                                <div class="product-list-item-container">
+                                    <img class="product-list-item-image" src='images/shoe.png' />
+                                    <div>
+                                        <p class="product-list-item-name">Name</p>
+                                        <p class="product-list-item-price">Price</p>
+                                        <!-- <p class="product-list-item-description">Description</p> -->
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                    </div>
+                </div>
+
+                <div id="product-view" hidden>
+                    <!-- <p id="test">test</p> -->
+                    <div class="product-container">
+                        <div class="product-img">
+                            <img id="product-image" src='images/shoe.png' width="100%">
+                        </div>
+                        <div class="product-details">
+                            <div class="product-title-container">
+                                <p id='product-name' class="product-title">Nike Lebron 16 Low</p>
+                                <p id='product-price' class="product-price">N150</p>
+                            </div>
+
+                            <p id="product-description" class="product-description">All sorts of lies to describe what
+                                this
+                                shoe looks like. I am afraid
+                                I just have to write anything. I have to do all these to fill up this space. So, don't
+                                be
+                                offended if this has no meaning to you.
+                            </p>
+                            <form id="cart-form" class="cart-data" method="post">
+                                <input id="cart-qty" type="number" name="cart-qty" size="10" />
+                                <button id="add-to-cart">Add to cart</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="cart-view" hidden>
+                    <h1>Cart</h1>
+                    <div class="column-2">
+                        <div class="layout-column-67 cart-items-column">
+                            <div id="cart-product-lines" class="cart-product-lines">
+                                <!-- <div class="cart-product-line">
+                                    <div class="product-line-image-and-text">
+                                        <img id="product-image" src='images/shoe.png'>
+                                        <p id="cart-product-title" class="cart-product-title">Nike Lebron 16 Low</p>
+                                    </div>
+                                    <div class="product-line-quantity">
+                                        <button id="reduce-quantity"><i class="fa-solid fa-minus"></i></button>
+                                        <input id="cart-product-quantity" class="cart-product-quantity" type="number" />
+                                        <button id="increase-quantity"><i class="fa-solid fa-plus"></i></button>
+                                    </div>
+                                    <div class="product-line-price">
+                                        <p id="cart-product-price" class="cart-product-price">N150</p>
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="layout-column-33 pay-column">
+                            <h1>Payment Summary</h1>
+                            <form id="payment-form" class="container-form">
+                                <div class="form-group">
+                                    <label for="vendor-id">Vendor ID</label>
+                                    <input id="cart-vendor-id" type="text" name="vendorId" size='35' />
+                                </div>
+                                <div class="form-group">
+                                    <label for="cart-email">Email</label>
+                                    <input id="cart-email" type="email" name="email" size='35' />
+                                </div>
+                                <div class="form-group">
+                                    <label for="cart-amount">Amount</label>
+                                    <input id="cart-amount" disabled type="text" name="amount" />
+                                </div>
+
+                                <div class="form-submit">
+                                    <button type="submit"> Pay with CryptoBank </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div id="cart-product-line-template" hidden>
+                        <div class="cart-product-line">
+                            <div class="product-line-image-and-text">
+                                <img id="product-image" class="product-line-image" src='images/shoe.png'>
+                                <p id="cart-product-title" class="cart-product-title">Nike Lebron 16 Low</p>
+                            </div>
+                            <div class="product-line-quantity">
+                                <button id="reduce-quantity"><i class="fa-solid fa-minus"></i></button>
+                                <input id="cart-product-quantity" class="cart-product-quantity" type="number" />
+                                <button id="increase-quantity"><i class="fa-solid fa-plus"></i></button>
+                            </div>
+                            <div class="product-line-price">
+                                <p id="cart-product-price" class="cart-product-price">N150</p>
+                                <i class="fa-solid fa-trash-can"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- <div id="footer">
+        <p>(c) Copyright CryptoBank Payments</p>
+    </div> -->
+
+    <!-- <div id="like_button_container" hidden></div> -->
+    <!-- 
+        <div class="body-segment bottom">
+            <div class="container">
+                <div class="tabs">
+                    <div class="tab">Description</div>
+                    <div class="tab">Reviews</div>
+                </div>
+                <div class="tabcontent">Tab Content</div>
+            </div>
+        </div>
+         -->
+    <!-- <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="like_button.js"></script>
+    <script src="cryptobankPayment.js"></script>
+    <script src="index.js"></script> -->
+
+</body>
+
+</html>
