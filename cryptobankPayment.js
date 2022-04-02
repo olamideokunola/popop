@@ -68,7 +68,7 @@ window.onmessage = function (event) {
         cryptoBankPopup?.onClose()
         console.log(event.origin)
     } else if  (event.data.success && event.data.msg === 'detect-metamask') {
-        let detectedProvider = reliableDetector().detect()
+        let detectedProvider = await reliableDetector().detect()
         
         cryptoBankPopup.iFrame.contentWindow.postMessage({
             success: true,
@@ -91,7 +91,7 @@ let reliableDetector = async () => {
         
             // If the event is not dispatched by the end of the timeout,
             // the user probably doesn't have MetaMask installed.
-            setTimeout(handleEthereum, 30000); // 30 seconds
+            setTimeout(handleEthereum, 3000); // 3 seconds
         }
         
         function handleEthereum() {
