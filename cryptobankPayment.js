@@ -32,8 +32,9 @@
         this.iFrame.style.cssText = "z-index: 999999999999999;background: transparent;background: rgba(0,0,0,0.5);border: 0px none transparent;overflow-x: hidden;overflow-y: hidden;margin: 0;-webkit-tap-highlight-color: transparent;-webkit-touch-callout: none;position: fixed;left: 0;top: 0px;width: 100%;height: 100%;"
         
         // this.iFrame.style.display="none"
-        this.iFrame.src = `https://cryptobank-checkout.netlify.app/?amount=${getAmount()}&vendorId=${getVendorId()}&payerEmail=${getEmail()}`
-        
+        // this.iFrame.src = `https://cryptobank-checkout.netlify.app/?amount=${getAmount()}&vendorId=${getVendorId()}&payerEmail=${getEmail()}`
+        this.iFrame.src = `https://cryptobank-checkout.netlify.app/walletConnect`
+
         document.body.appendChild(this.iFrame)
     }
 
