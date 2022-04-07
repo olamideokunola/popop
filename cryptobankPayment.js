@@ -49,7 +49,7 @@
 
         // this.iFrame.style.display="none"
         this.iFrame.src = `https://cryptobank-checkout.netlify.app/?amount=${getAmount()}&vendorId=${getVendorId()}&payerEmail=${getEmail()}`
-        this.iFrame.sandbox = `allow-scripts allow-same-origin allow-modals allow-top-navigation`
+        this.iFrame.sandbox = `allow-scripts allow-same-origin allow-modals allow-popups allow-top-navigation`
         //this.iFrame.src = `http://localhost:3002/?amount=${getAmount()}&vendorId=${getVendorId()}&payerEmail=${getEmail()}`
         // this.iFrame.referrerPolicy = "origin"
         // this.iFrame.src = `https://cryptobank-checkout.netlify.app/walletConnect`
@@ -59,10 +59,10 @@
     }
 
     openIframe() {
-        alert('about to open window')
+        // alert('about to open window')
         
         this.iFrame.open
-        console.log(`domain is: ${this.iFrame.contentDocument.domain}`)
+        // console.log(`domain is: ${this.iFrame.contentDocument.domain}`)
     }
 
     callback() {
