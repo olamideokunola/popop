@@ -510,7 +510,7 @@ function payWithCryptoBank(e) {
         email: $cartEmail.value,
         amount: getAmount() * 100,
         currency: 'NGN',
-        vendorId: getVendorId(),
+        vendorId: getVendorId(),    
         onClose: function () {
             alert('Are you sure you want to cancel the payment?');
         },
