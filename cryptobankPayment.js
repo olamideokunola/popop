@@ -31,17 +31,38 @@
         
         this.iFrame.style.cssText = "z-index: 999999999999999;background: transparent;background: rgba(0,0,0,0.5);border: 0px none transparent;overflow-x: hidden;overflow-y: hidden;margin: 0;-webkit-tap-highlight-color: transparent;-webkit-touch-callout: none;position: fixed;left: 0;top: 0px;width: 100%;height: 100%;"
         
+
+        // start payment and get id from CryptoBank API
+        // let url = 'http://localhost:4000/payments'
+        // const response = await fetch(url, {
+        //     method: 'POST',
+        //     mode: 'cors',
+        //     cache: 'no-cache',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(this.settings)
+        // })
+
+        // console.log(response.data)
+
+
         // this.iFrame.style.display="none"
         this.iFrame.src = `https://cryptobank-checkout.netlify.app/?amount=${getAmount()}&vendorId=${getVendorId()}&payerEmail=${getEmail()}`
-        // this.iFrame.src = `http://localhost:3000/walletConnect`
+        this.iFrame.sandbox = `allow-scripts allow-same-origin allow-modals allow-top-navigation`
+        //this.iFrame.src = `http://localhost:3002/?amount=${getAmount()}&vendorId=${getVendorId()}&payerEmail=${getEmail()}`
+        // this.iFrame.referrerPolicy = "origin"
         // this.iFrame.src = `https://cryptobank-checkout.netlify.app/walletConnect`
-
+        
         document.body.appendChild(this.iFrame)
+       
     }
 
     openIframe() {
-        console.log('about to open window')
+        alert('about to open window')
+        
         this.iFrame.open
+        console.log(`domain is: ${this.iFrame.contentDocument.domain}`)
     }
 
     callback() {
