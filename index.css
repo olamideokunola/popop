@@ -29,6 +29,11 @@ body {
     position: relative;
 }   
 
+#email-validation-error {
+    color: red;
+    margin: 0px;
+}
+
 .mobile-nav-screen-bkg {
     display: flex;
     position: fixed;
@@ -961,5 +966,7 @@ ul {
     .cart-product-quantity {
         text-align: center;
     }
+
+
 }
 

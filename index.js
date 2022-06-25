@@ -59,7 +59,7 @@ let state = {
     quantity: 0,
     currency: 'NGN',
     price: 15000,
-    email: 'olamideokunola@yahoo.com',
+    email: '', //'olamideokunola@yahoo.com',
     vendorId: "7ced88de-debc-4b37-b18a-1ab2f507352d",
     product: products[0],
     cartItem: {},
@@ -134,6 +134,8 @@ let $openWindowButton = D.getElementById("open-window")
 let $cartForm = D.getElementById("cart-form")
 let $paymentForm = D.getElementById('payment-form');
 
+let $paymentFormEmailValidationElement = D.getElementById('email-validation-error')
+
 let $cartProductTitle = D.getElementById('cart-product-title')
 let $cartProductPrice = D.querySelector('.cart-product-price')
 let $cartProductQuantity = D.getElementById('cart-product-quantity')
@@ -141,6 +143,8 @@ let $cartProductQuantity = D.getElementById('cart-product-quantity')
 let $cartAmount = D.getElementById('cart-amount');
 let $cartEmail = D.getElementById('cart-email');
 let $cartVendorId = D.getElementById('cart-vendor-id')
+
+
 
 let $reduceQuantity = D.getElementById('reduce-quantity')
 let $increaseQuantity = D.getElementById('increase-quantity')
@@ -501,32 +505,44 @@ $increaseQuantity.addEventListener('click', (e) => {
 
 $paymentForm.addEventListener("submit", payWithCryptoBank)
 
+function fieldsAreValid() {
+    let response = false
+    if ($cartEmail.value !== '') return true
+    return response
+}
+
 function payWithCryptoBank(e) {
     console.log(`in payWithCryptoBank`)
+    console.log('target email is', $cartEmail.value)
+    $paymentFormEmailValidationElement.hidden = true
     e.preventDefault();
 
-    cryptoBankPopup.setup({
-        key: 'pk_test_xxxxxxxxxx', // Replace with your public key
-        email: $cartEmail.value,
-        amount: getAmount() * 100,
-        currency: 'NGN',
-        vendorId: getVendorId(),    
-        onClose: function () {
-            alert('Are you sure you want to cancel the payment?');
-        },
-        callback: function ({ msg, tokenQty, tokenSymbol, usdAmount, fiatSymbol, fiatAmount, paymentId }) {
-            let message = `Payment complete! ${fiatSymbol} ${fiatAmount} paid with ${tokenSymbol} ${tokenQty}`
-            message = `Payment complete! reference id is ${paymentId}`
-            console.log(message);
-
-            productView.style.display = "block"
-            cartView.style.display = "none"
-
-            productView.reset()
-            console.log(`cart item value: ${$cartItem.value}`)
-            console.log(`cart item value: ${$cartQty.innerHTML}`)
-        }
-    })
+    if(fieldsAreValid()) {
+        cryptoBankPopup.setup({
+            key: 'pk_test_xxxxxxxxxx', // Replace with your public key
+            email: $cartEmail.value,
+            amount: getAmount() * 100,
+            currency: 'NGN',
+            vendorId: getVendorId(),    
+            onClose: function () {
+                alert('Are you sure you want to cancel the payment?');
+            },
+            callback: function ({ msg, tokenQty, tokenSymbol, usdAmount, fiatSymbol, fiatAmount, paymentId }) {
+                let message = `Payment complete! ${fiatSymbol} ${fiatAmount} paid with ${tokenSymbol} ${tokenQty}`
+                message = `Payment complete! reference id is ${paymentId}`
+                console.log(message);
+    
+                productView.style.display = "block"
+                cartView.style.display = "none"
+    
+                productView.reset()
+                console.log(`cart item value: ${$cartItem.value}`)
+                console.log(`cart item value: ${$cartQty.innerHTML}`)
+            }
+        })
+    } else {
+        $paymentFormEmailValidationElement.hidden = false
+    }
 
     cryptoBankPopup.openIframe()
 }

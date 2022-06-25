@@ -1,4 +1,4 @@
- class CryptoBankPopup {
+class CryptoBankPopup {
 
     iFrame = document.createElement('iframe')
     settings = null
@@ -48,14 +48,15 @@
 
 
         // this.iFrame.style.display="none"
-        this.iFrame.src = `https://cryptobank-checkout.netlify.app/?amount=${getAmount()}&vendorId=${getVendorId()}&payerEmail=${getEmail()}`
+        // this.iFrame.src = `https://cryptobank-checkout.netlify.app/?amount=${getAmount()}&vendorId=${getVendorId()}&payerEmail=${getEmail()}`
+        this.iFrame.src = `https://cryptobank-checkout.netlify.app/?amount=${getAmount()}&vendorId=${getVendorId()}&payerEmail=${this.settings.email}`
+
         this.iFrame.sandbox = `allow-scripts allow-same-origin allow-modals allow-popups allow-top-navigation`
-        //this.iFrame.src = `http://localhost:3002/?amount=${getAmount()}&vendorId=${getVendorId()}&payerEmail=${getEmail()}`
+        //this.iFrame.src = `http://localhost:3002/?amount=${getAmount()}&vendorId=${getVendorId()}&payerEmail=${this.settings.email}`
         // this.iFrame.referrerPolicy = "origin"
         // this.iFrame.src = `https://cryptobank-checkout.netlify.app/walletConnect`
         
         document.body.appendChild(this.iFrame)
-       
     }
 
     openIframe() {
